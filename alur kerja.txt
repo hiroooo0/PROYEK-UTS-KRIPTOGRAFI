@@ -1,0 +1,24 @@
+Konsep kerja dari program aplikasi web analisis frekuensi berbasis Streamlit di atas dapat dibagi menjadi beberapa tahapan utama, mulai dari penerimaan input hingga proses interaktif dekripsi. Berikut adalah penjelasan alurnya:
+
+1. Inisialisasi dan Antarmuka Pengguna (UI)
+	Program diinisialisasi menggunakan pustaka Streamlit, yang bertindak sebagai jembatan untuk membuat tampilan web interaktif secara langsung dari skrip Python.
+	Pengguna disuguhkan komponen text area untuk memasukkan teks tersandi (ciphertext) yang ingin dianalisis, serta data referensi frekuensi standar bahasa (dalam hal ini menggunakan pendekatan frekuensi huruf bahasa Indonesia) untuk perbandingan.
+
+2. Pra-pemrosesan Teks (Text Preprocessing)
+	Saat ciphertext dimasukkan, program secara otomatis menyaring teks tersebut. Hanya karakter alfabet (A-Z atau a-z) yang diambil, sementara spasi, angka, atau tanda baca  diabaikan agar perhitungan statistik akurat.
+	Semua huruf diseragamkan menjadi huruf kapital (uppercase) agar penghitungan tidak bersifat sensitif huruf besar-kecil (case-insensitive).
+
+3. Analisis Frekuensi dan Statistik Karakter
+	Program menghitung jumlah kemunculan setiap huruf menggunakan modul Counter dari pustaka standar Python.
+	Hasil perhitungan tersebut diubah ke dalam bentuk persentase relatif berdasarkan total keseluruhan huruf yang valid.
+	Data kemudian disusun ke dalam sebuah struktur tabel terstruktur (pandas DataFrame) yang diurutkan dari huruf yang paling sering muncul hingga yang paling jarang.
+
+4. Visualisasi Data (Grafik & Tabel)
+	Program membagi tata letak layar menjadi dua kolom untuk menyajikan informasi secara visual:
+	Kolom Pertama: Menampilkan tabel rincian jumlah dan persentase kemunculan masing-masing karakter pada ciphertext.
+	Kolom Kedua: Menampilkan diagram batang (bar chart) menggunakan komponen bawaan Streamlit untuk memudahkan pengamatan pola visual distribusi huruf.
+
+5. Panel Substitusi Interaktif (Trial & Error)
+	Di bagian bawah, program menyediakan kolom input teks interaktif di mana pengguna dapat mengetikkan pemetaan kunci tebakan mereka (contoh format: U=H R=E).
+	Ketika pengguna memasukkan pemetaan tersebut, program akan membaca aturan substitusi secara dinamis, lalu menerjemahkan kembali ciphertext asli ke dalam bentuk plaintext sementara secara real-time.
+	Hasil dekripsi sementara langsung ditampilkan di layar, memungkinkan pengguna untuk menguji hipotesis mereka, mencocokkannya dengan pola frekuensi huruf yang dominan, dan terus memperbaiki tebakan kuncinya hingga pesan aslinya terbaca.
