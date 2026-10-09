@@ -1,0 +1,2 @@
+1. pip install streamlit pandas matplotlib
+2. streamlit run app.py
